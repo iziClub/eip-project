@@ -1,0 +1,107 @@
+name: CD Pipeline in Production
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag name (ex. v1.0.0)'
+        required: true
+        default: 'latest'
+
+jobs:
+  set-tag:
+    runs-on: ubuntu-latest
+    outputs:
+      tag_name: ${{ steps.tag.outputs.TAG_NAME }}
+    steps:
+      - name: Set tag name
+        id: tag
+        run: |
+          if [[ "${{ github.event_name }}" == "release" ]]; then
+            echo "TAG_NAME=${{ github.event.release.tag_name }}" >> $GITHUB_OUTPUT
+          else
+            echo "TAG_NAME=${{ github.event.inputs.tag }}" >> $GITHUB_OUTPUT
+          fi
+
+  build-docker-api:
+    needs: set-tag
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./monorepo
+    name: Build and push Docker image - teofeo/eip-iziclub-api:${{ needs.set-tag.outputs.tag_name }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Log in to Docker Hub
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
+      - name: Build Docker image
+        run: docker build -f apps/api/Dockerfile -t teofeo/eip-iziclub-api:${{ needs.set-tag.outputs.tag_name }} apps/api/.
+
+      - name: Push Docker image
+        run: |
+          docker push teofeo/eip-iziclub-api:${{ needs.set-tag.outputs.tag_name }}
+          docker tag teofeo/eip-iziclub-api:${{ needs.set-tag.outputs.tag_name }} teofeo/eip-iziclub-api:latest
+          docker push teofeo/eip-iziclub-api:latest
+
+  build-docker-web:
+    needs: set-tag
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./monorepo
+    name: Build and push Docker image - teofeo/eip-iziclub-web:${{ needs.set-tag.outputs.tag_name }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Log in to Docker Hub
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
+      - name: Build Docker image
+        run: docker build -f apps/web/Dockerfile -t teofeo/eip-iziclub-web:${{ needs.set-tag.outputs.tag_name }} apps/web/.
+
+      - name: Push Docker image
+        run: |
+          docker push teofeo/eip-iziclub-web:${{ needs.set-tag.outputs.tag_name }}
+          docker tag teofeo/eip-iziclub-web:${{ needs.set-tag.outputs.tag_name }} teofeo/eip-iziclub-web:latest
+          docker push teofeo/eip-iziclub-web:latest
+
+  ssh-remote-prod:
+    needs: [set-tag, build-docker-api, build-docker-web]
+    name: Execute remote SSH commands
+    runs-on: ubuntu-latest
+    steps:
+      - name: Execute remote SSH commands using SSH key
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.HOST_PROD }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            #!/bin/bash
+            TAG="${{ needs.set-tag.outputs.tag_name }}"
+            # API
+            docker stop eip-iziclub-api || true
+            docker rm eip-iziclub-api || true
+            docker rmi teofeo/eip-iziclub-api:$TAG || true
+            docker pull teofeo/eip-iziclub-api:$TAG
+            docker run -d -p 3333:3333 --name eip-iziclub-api \
+              -e NODE_ENV=production \
+              -e PORT=${{ secrets.ADONISJS_PORT }} \
+              -e APP_KEY=${{ secrets.ADONISJS_API_SECRET_KEY }} \
+              -e HOST=${{ secrets.ADONISJS_HOST }} \
+              -e LOG_LEVEL=info \
+              teofeo/eip-iziclub-api:$TAG
+            # Web
+            docker stop eip-iziclub-web || true
+            docker rm eip-iziclub-web || true
+            docker rmi teofeo/eip-iziclub-web:$TAG || true
+            docker pull teofeo/eip-iziclub-web:$TAG
+            docker run -d -p 3000:3000 --name eip-iziclub-web \
+              -e NODE_ENV=production \
+              teofeo/eip-iziclub-web:$TAG
