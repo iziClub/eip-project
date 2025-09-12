@@ -11,7 +11,7 @@ This guide describes the technological environment of the project, including the
 | Next.js     | 15.3.5  | React framework for web application           |
 | Adonis.js   | 6.18.0  | Node.js framework for backend API             |
 | Expo        | 53.0.20 | React Native framework for mobile application |
-| Node.js     | 24.4.0  | JavaScript runtime environment                |
+| Node.js     | 22.19.0  | JavaScript runtime environment                |
 | Yarn / PNPM | Latest  | Dependency manager and workspaces             |
 | Jest        | Latest  | Unit testing framework                        |
 | Cypress     | Latest  | Integration and E2E testing framework         |

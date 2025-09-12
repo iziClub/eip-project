@@ -14,13 +14,21 @@ jobs:
    run-tests:
     runs-on: ubuntu-latest
     name: Run tests in monorepo
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Setup Environment
         uses: ./.github/actions/setup-environment
+
+      - name: Configure AdonisJS environment
+        working-directory: ./monorepo/apps/api
+        run: |
+          echo "NODE_ENV=test" >> .env
+          echo "PORT=3333" >> .env
+          echo "HOST=localhost" >> .env
+          echo "LOG_LEVEL=debug" >> .env
+          node ace generate:key
 
       - name: Run tests
         run: pnpm turbo run test  --cache-dir=.turbo
