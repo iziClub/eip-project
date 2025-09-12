@@ -24,6 +24,12 @@ jobs:
 
       - name: Run tests
         run: pnpm turbo run test  --cache-dir=.turbo
+        env:
+          NODE_ENV: test
+          PORT: 3333
+          HOST: 0.0.0.0
+          LOG_LEVEL: debug
+          APP_KEY: api_key
    
    build-api:
     runs-on: ubuntu-latest
