@@ -26,9 +26,9 @@ jobs:
         run: |
           echo "NODE_ENV=test" >> .env
           echo "PORT=3333" >> .env
-          node ace generate:key
           echo "HOST=localhost" >> .env
           echo "LOG_LEVEL=debug" >> .env
+          node ace generate:key
           ls -la
           pwd
           cat .env
