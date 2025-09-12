@@ -44,3 +44,8 @@ export const configureSuite: Config['configureSuite'] = (suite) => {
     return suite.setup(() => testUtils.httpServer().start())
   }
 }
+
+process.env.NODE_ENV = 'test'
+process.env.APP_KEY = 'un_secret_fixe_pour_les_tests'
+process.env.HOST = 'localhost'
+process.env.LOG_LEVEL = 'debug'
