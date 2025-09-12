@@ -20,6 +20,18 @@ jobs:
 
       - name: Setup Environment
         uses: ./.github/actions/setup-environment
+
+      - name: Configure AdonisJS environment
+        working-directory: ./monorepo/apps/api
+        run: |
+          echo "NODE_ENV=test" >> .env
+          echo "PORT=3333" >> .env
+          node ace generate:key
+          echo "HOST=localhost" >> .env
+          echo "LOG_LEVEL=debug" >> .env
+          ls -la
+          pwd
+          cat .env
           
       - name: Run tests
         run: pnpm turbo run test  --cache-dir=.turbo
