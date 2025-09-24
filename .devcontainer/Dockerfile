@@ -1,9 +1,9 @@
 FROM node:22.19.0-alpine3.22
 USER root
 
-RUN apk update && apk add --no-cache \
+RUN apk update && apk upgrade && \
+    apk add --no-cache \
     bash \
-    git \
     curl \
     wget \
     jq \
@@ -12,6 +12,8 @@ RUN apk update && apk add --no-cache \
     openssh-client \
     ca-certificates \
     tmux
+
+RUN apk add --no-cache git
 
 RUN npm install -g pnpm
 
@@ -31,6 +33,9 @@ RUN mkdir -p /home/node/.bashrc.d && \
     } >> /home/node/.bashrc
 
 RUN npm install -g typescript eslint prettier nodemon
+RUN git config --system --add safe.directory /workspaces
+
+EXPOSE 3333 3000 8081 19000 19001 19002
 
 USER node
 WORKDIR /home/node

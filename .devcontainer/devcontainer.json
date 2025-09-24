@@ -3,6 +3,20 @@
   "build": {
     "dockerfile": "Dockerfile"
   },
+  "runArgs": [
+    "-p",
+    "3333:3333",
+    "-p",
+    "3000:3000",
+    "-p",
+    "8081:8081",
+    "-p",
+    "19000:19000",
+    "-p",
+    "19001:19001",
+    "-p",
+    "19002:19002"
+  ],
   "customizations": {
     "vscode": {
       "settings": {
@@ -33,8 +47,8 @@
   "remoteUser": "node",
   "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces,type=bind",
   "mounts": [
-      "source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/home/node/.ssh,type=bind,consistency=cached"
-    ],
+    "source=${localEnv:USERPROFILE}/.ssh,target=/home/node/.ssh,type=bind,consistency=cached"
+  ],
   "workspaceFolder": "/workspaces",
   "forwardPorts": [3333, 3000, 8081],
   "portsAttributes": {
