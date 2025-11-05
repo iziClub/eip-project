@@ -6,10 +6,76 @@
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  /* FONT */
+  --font-primary: var(--font-figtree);
+
+  /* COLOR */
+  --color-primary: #271f50;
+  --color-secondary: #0E011A;
+
+  /* grey */
+  --color-grey-1: #f7f6f5;
+  --color-grey-2: #ebe9e8;
+  --color-grey-3: #b8b4b1;
+
+  /* error */
+  --color-error-primary: #cc1e1e;
+  --color-error-secondary: #fff0f0;
+
+  /* accent */
+
+  --color-red-primary: #D42E2F;
+  --color-red-secondary: #FD696A;
+  --color-orange-primary: #D85D12;
+  --color-orange-secondary: #F6792C;
+  --color-yellow-primary: #F9BC12;
+  --color-yellow-secondary: #FACD4E;
+  --color-pink-primary: #EE82EC;
+  --color-pink-secondary: #FCB5FB;
+  --color-blue-primary: #1C52D2;
+  --color-blue-secodary: #467CFC;
+  --color-green-primary: #096B49;
+  --color-green-secondary: #0C8C5F;
+
+  /* base */
+
+  --color-black: #000;
+  --color-white: #fff;
+
+  /* TEXT SIZE */
+  --text-xs: 0.8rem;
+  /* --text-xs--line-height: calc(1 / 0.75); */
+  --text-sm: 1rem;
+  /* --text-sm--line-height: calc(1.25 / 0.875); */
+  --text-base: 1.25rem;
+  /* --text-base--line-height: calc(1.5 / 1); */
+  --text-lg: 1.563rem;
+  /* --text-lg--line-height: calc(1.75 / 1.125); */
+  --text-xl: 1.953rem;
+  /* --text-xl--line-height: calc(1.75 / 1.25); */
+  --text-2xl: 2.441rem;
+  /* --text-2xl--line-height: calc(2 / 1.8); */
+  --text-3xl: 3.052rem;
+  /* --text-3xl--line-height: calc(2.25 / 1.875); */
+  --text-4xl:  3.815rem;
+  /* --text-4xl--line-height: calc(2.5 / 2.25); */
+  --text-5xl: 5.61rem;
+  /* --text-5xl--line-height: 1; */
+}
+
+@layer utilities {
+  .grid-container {
+    @apply px-6
+  }
+
+  .grid-layout {
+    @apply grid grid-cols-12
+  }
+
+  .grid-gap {
+    @apply gap-6
+  }
 }
 
 @media (prefers-color-scheme: dark) {
