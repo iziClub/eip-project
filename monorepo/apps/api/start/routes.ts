@@ -1,22 +1,16 @@
-/*
-|--------------------------------------------------------------------------
-| Routes file
-|--------------------------------------------------------------------------
-|
-| The routes file is used for defining the HTTP routes.
-|
-*/
-
 import router from '@adonisjs/core/services/router'
+import openapi from '@foadonis/openapi/services/main'
+import HealthController from '#controllers/health_controller'
 
-router.get('/', async () => {
-  return {
-    hello: 'world',
-  }
-})
+openapi.registerRoutes('api/docs')
 
-router.get('/api/ping', async () => {
-  return {
-    message: 'pong',
-  }
-})
+router.get('/health', [HealthController, 'index'])
+
+router.get('/', () => ({
+  name: 'Iziclub - API',
+  version: '1.0.0',
+  docs: '/api/docs',
+  status: 'online',
+}))
+
+await import('./routes/auth.js')

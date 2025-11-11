@@ -1,0 +1,8 @@
+{
+  "devDependencies": {
+    "@adonisjs/tsconfig": "^1.4.1",
+    "@swc/core": "^1.15.1",
+    "ts-node-maintained": "^10.9.6",
+    "typescript": "^5.9.3"
+  }
+}
