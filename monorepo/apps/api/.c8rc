@@ -1,10 +1,5 @@
 {
-  "include": [
-    "app/controllers/**",
-    "app/models/**",
-    "app/services/**",
-    "app/middleware/**"
-  ],
+  "include": ["app/controllers/**", "app/models/**", "app/services/**", "app/middleware/**"],
   "exclude": [
     "app/validators/**",
     "app/exceptions/**",
@@ -16,8 +11,5 @@
     "tests/**",
     "**/*.d.ts"
   ],
-  "reporter": [
-    "text",
-    "lcov"
-  ]
+  "reporter": ["text", "lcov"]
 }
