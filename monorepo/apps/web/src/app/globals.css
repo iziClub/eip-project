@@ -21,7 +21,7 @@
 
   /* error */
   --color-error-primary: #cc1e1e;
-  --color-error-secondary: #fff0f0;
+  --color-error-secondary:  ;
 
   /* accent */
 
@@ -75,6 +75,10 @@
 
   .grid-gap {
     @apply gap-6
+  }
+
+  .el-container {
+    @apply rounded-[10px] px-[35px] py-[25px] bg-white
   }
 }
 
