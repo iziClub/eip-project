@@ -13,7 +13,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: Variant;
   size?: Size;
   className?: string;
-  onClick?: (event: MouseEvent<HTMLButtonElement>) => void; // 👈 explicitly typed
+  onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
 }
 
 const variantClasses: Record<Variant, string> = {
@@ -45,7 +45,8 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       variant = "primary",
       size = "md",
       className = "",
-      onClick, // 👈 extracted
+      onClick,
+      type = "button",
       ...rest
     },
     ref
@@ -55,8 +56,9 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <button
         ref={ref}
+        type={type}
         className={classes}
-        onClick={onClick} // 👈 ensure it fires
+        onClick={onClick}
         {...rest}
       >
         {children}

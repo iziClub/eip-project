@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import TextInput from './TextInput';
 
 interface PasswordRequirement {
