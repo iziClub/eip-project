@@ -1,6 +1,6 @@
 import router from '@adonisjs/core/services/router'
-import openapi from '@foadonis/openapi/services/main'
 import HealthController from '#controllers/health_controller'
+import openapi from '@foadonis/openapi/services/main'
 
 openapi.registerRoutes('api/docs')
 
@@ -14,3 +14,4 @@ router.get('/', () => ({
 }))
 
 await import('./routes/auth.js')
+await import('./routes/clubs.js')
