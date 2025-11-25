@@ -5,6 +5,7 @@ import { AuthProvider } from '@/contexts/AuthContext';
 import ToasterProvider from '@/components/providers/ToasterProvider';
 
 import './globals.css'
+import Modal from '@/components/ui/Modal';
 
 const figtree = Figtree({
   subsets: ["latin"],
@@ -22,6 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <AuthProvider>
             {children}
             <ToasterProvider />
+            <Modal />
         </AuthProvider>
       </body>
     </html>

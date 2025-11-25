@@ -5,8 +5,8 @@ import React, {
   MouseEvent,
 } from "react";
 
-type Variant = "primary" | "grey";
-type Size = "sm" | "md" | "lg";
+type Variant = "primary" | "grey" | "modifier" | "save";
+type Size = "sm" | "md" | "lg" | "full";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
@@ -19,17 +19,20 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 const variantClasses: Record<Variant, string> = {
   primary:
     "bg-primary text-white hover:bg-secondary focus:ring-1 focus:ring-black",
-  grey: "bg-grey-2 hover:bg-grey-1 text-black focus:ring-1 focus:ring-primary",
+  grey: "bg-grey-1 hover:bg-grey-2 text-black border border-grey-2 focus:ring-1 focus:ring-primary",
+  modifier: "bg-transparent border border-blue-secondary hover:bg-blue-secondary",
+  save: "bg-blue-secondary hover:bg-blue-primary text-white focus:ring-1 focus:ring-black",
 };
 
 const sizeClasses: Record<Size, string> = {
   sm: "px-3 py-1.5 text-sm rounded-md",
   md: "px-4 py-2 text-base rounded-lg",
   lg: "px-6 py-4 text-sm rounded-xl",
+  full: "h-auto px-[18px] rounded-lg",
 };
 
 const baseClasses =
-  "inline-flex cursor-pointer items-center justify-center gap-2 font-medium transition-colors duration-150 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none";
+  "inline-flex cursor-pointer items-center justify-center gap-2 font-medium transition-colors duration-150 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none group/button";
 
 /**
  * Generic Button component for Next.js + Tailwind.
