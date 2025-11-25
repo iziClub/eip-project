@@ -12,15 +12,17 @@ export interface TextInputProps {
   disabled?: boolean;
   error?: boolean;
   className?: string;
-  labelClassName?: string;
+  labelClassName?: "small" | "large";
   inputClassName?: string;
   hideToggle?: boolean;
+  defaultValue?: string;
 }
 
 const TextInput: React.FC<TextInputProps> = ({
   label,
   placeholder,
   required = false,
+  defaultValue,
   value,
   onChange,
   type = 'text',
@@ -46,7 +48,7 @@ const TextInput: React.FC<TextInputProps> = ({
       {label && (
         <label
           htmlFor={id}
-          className={`text-sm font-medium text-gray-700 ${labelClassName}`}
+          className={`${labelClassName === 'small' ? 'text-sm font-medium' : ''} ${labelClassName === 'large' ? 'text-base font-semibold' : ''} text-black`}
         >
           {label}
           {required && <span className="text-red-500 ml-1">*</span>}
@@ -56,17 +58,19 @@ const TextInput: React.FC<TextInputProps> = ({
         <input
           id={id}
           type={inputType}
+          defaultValue={defaultValue}
           name={name}
           value={value}
           onChange={onChange}
           placeholder={placeholder}
+          readOnly={!onChange}
           required={required}
           disabled={disabled}
           className={`
             w-full p-4 
-            border border-gray-2 rounded-[10px] placeholder:text-grey-3 text-grey-3
-            focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent
-            disabled:bg-gray-100 disabled:cursor-not-allowed
+            border border-grey-2 rounded-[10px] placeholder:text-grey-3 ${disabled ? "text-grey-3" : "text-black"}
+            focus:outline-none focus:ring-2 focus:ring-grey-3 focus:border-transparent
+            disabled:cursor-not-allowed
             ${error ? 'border-error-primary bg-error-secondary focus:ring-error-primary' : ''}
             ${hideToggle ? 'pr-12' : ''}
             ${inputClassName}

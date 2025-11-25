@@ -19,7 +19,7 @@ interface PasswordInputProps {
   disabled?: boolean;
   error?: boolean;
   className?: string;
-  labelClassName?: string;
+  labelClassName?: "small" | "large";
   inputClassName?: string;
   showForgotPassword?: boolean;
   onForgotPasswordClick?: () => void;
@@ -62,7 +62,7 @@ const PasswordInput: React.FC<PasswordInputProps> = ({
   disabled = false,
   error,
   className = '',
-  labelClassName = '',
+  labelClassName,
   inputClassName = '',
   showForgotPassword = false,
   onForgotPasswordClick,
