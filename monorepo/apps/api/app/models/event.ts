@@ -1,12 +1,15 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, hasMany } from '@adonisjs/lucid/orm'
-import type { HasMany } from '@adonisjs/lucid/types/relations'
+import { BaseModel, belongsTo, column } from '@adonisjs/lucid/orm'
+import type { BelongsTo } from '@adonisjs/lucid/types/relations'
 import { slugify } from '@adonisjs/lucid-slugify'
-import Event from '#models/event'
+import Club from '#models/club'
 
-export default class Club extends BaseModel {
+export default class Event extends BaseModel {
   @column({ isPrimary: true })
   declare id: number
+
+  @column()
+  declare clubId: number
 
   @column()
   declare name: string
@@ -26,13 +29,10 @@ export default class Club extends BaseModel {
   declare type: string
 
   @column()
-  declare email: string | null
+  declare city: string | null
 
   @column()
-  declare phone: string | null
-
-  @column({ serializeAs: 'websiteUrl' })
-  declare websiteUrl: string | null
+  declare country: string
 
   @column({ serializeAs: 'addressLine1' })
   declare addressLine1: string | null
@@ -44,16 +44,16 @@ export default class Club extends BaseModel {
   declare postalCode: string | null
 
   @column()
-  declare city: string | null
-
-  @column()
-  declare country: string
-
-  @column()
   declare latitude: number | null
 
   @column()
   declare longitude: number | null
+
+  @column.dateTime({ serializeAs: 'startAt' })
+  declare startAt: DateTime | null
+
+  @column.dateTime({ serializeAs: 'endAt' })
+  declare endAt: DateTime | null
 
   @column({ serializeAs: 'imageUrl' })
   declare imageUrl: string | null
@@ -67,6 +67,6 @@ export default class Club extends BaseModel {
   @column.dateTime({ autoCreate: true, autoUpdate: true, serializeAs: 'updatedAt' })
   declare updatedAt: DateTime
 
-  @hasMany(() => Event)
-  declare events: HasMany<typeof Event>
+  @belongsTo(() => Club)
+  declare club: BelongsTo<typeof Club>
 }

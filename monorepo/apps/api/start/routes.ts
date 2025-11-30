@@ -15,3 +15,4 @@ router.get('/', () => ({
 
 await import('./routes/auth.js')
 await import('./routes/clubs.js')
+await import('./routes/events.js')

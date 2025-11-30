@@ -36,6 +36,24 @@ export default class ClubsController {
     example: 20,
   })
   @ApiQuery({
+    name: 'latitude',
+    type: Number,
+    required: false,
+    description: 'Latitude to filter clubs nearby'
+  })
+  @ApiQuery({
+    name: 'longitude',
+    type: Number,
+    required: false,
+    description: 'Longitude to filter clubs nearby'
+  })
+  @ApiQuery({
+    name: 'radius_km',
+    type: Number,
+    required: false,
+    description: 'Radius in kilometers used with latitude/longitude (default: 50km)'
+  })
+  @ApiQuery({
     name: 'city',
     type: String,
     required: false,
@@ -67,6 +85,10 @@ export default class ClubsController {
     const q = payload.q
     const city = payload.city
     const type = payload.type
+    const latitude = payload.latitude
+    const longitude = payload.longitude
+    const radiusKm = payload.radius_km ?? 50
+    const hasLocation = latitude !== undefined && longitude !== undefined
 
     const query = Club.query()
 
@@ -86,6 +108,19 @@ export default class ClubsController {
 
     if (type) {
       query.where('type', type)
+    }
+
+    if (hasLocation) {
+      const latRadius = radiusKm / 111.32
+      const lonRadius =
+        radiusKm / Math.max(111.32 * Math.cos((latitude * Math.PI) / 180), 0.0001)
+
+      query
+        .whereNotNull('latitude')
+        .whereNotNull('longitude')
+        .whereBetween('latitude', [latitude - latRadius, latitude + latRadius])
+        .whereBetween('longitude', [longitude - lonRadius, longitude + lonRadius])
+        .orderByRaw('ABS(latitude - ?) + ABS(longitude - ?)', [latitude, longitude])
     }
 
     query.orderBy('name', 'asc')

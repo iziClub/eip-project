@@ -47,6 +47,9 @@ export class ClubDto {
   @ApiProperty({ type: Number, required: false })
   declare longitude?: number | null
 
+  @ApiProperty({ type: String, required: false })
+  declare imageUrl?: string | null
+
   @ApiProperty({ type: Boolean })
   declare isActive: boolean
 
