@@ -6,6 +6,7 @@ import { useState } from "react";
 export default function InformationTab() {
   const [clubName, setClubName] = useState("AS Talange");
   const [bannerFile, setBannerFile] = useState<File | null>(null);
+  const [slogan, setSlogan] = useState("Le club le plus cool de la ville!");
   return (
     <div className="flex flex-col gap-4">
       <FieldModifier
@@ -19,6 +20,12 @@ export default function InformationTab() {
         value={bannerFile || new File([], "")}
         type="file"
         onSave={setBannerFile}
+      />
+      <FieldModifier
+        label="Slogan"
+        value={slogan}
+        type="textarea"
+        onSave={setSlogan}
       />
     </div>
   );

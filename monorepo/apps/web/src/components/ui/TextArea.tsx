@@ -1,14 +1,32 @@
-export const TextArea = ({
+import React from "react";
+
+interface TextAreaProps {
+  defaultValue?: string;
+  value?: string;
+  rows?: number;
+  resize?: boolean;
+  onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  disabled?: boolean;
+}
+
+const TextArea: React.FC<TextAreaProps> = ({
   defaultValue,
+  value,
+  rows = 4,
+  resize = false,
   onChange,
-}: {
-  defaultValue: string;
-  onChange: (value: string) => void;
-}) => (
-  <textarea
-    defaultValue={defaultValue}
-    className="border p-2 w-full"
-    rows={4}
-    onChange={(e) => onChange(e.target.value)}
-  />
-);
+  disabled = false,
+}) => {
+  return (
+    <textarea
+      defaultValue={defaultValue}
+      value={value}
+      className={`border border-grey-2 text-black p-4 w-full rounded-[10px] ${resize ? 'resize' : 'resize-none'} ${disabled ? ' text-grey-3' : ''}`}
+      rows={rows}
+      onChange={onChange}
+      disabled={disabled}
+    />
+  );
+}
+
+export default TextArea;

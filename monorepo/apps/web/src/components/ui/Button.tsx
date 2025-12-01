@@ -32,7 +32,7 @@ const sizeClasses: Record<Size, string> = {
 };
 
 const baseClasses =
-  "inline-flex cursor-pointer items-center justify-center gap-2 font-medium transition-colors duration-150 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none group/button";
+  "inline-flex cursor-pointer items-center justify-center gap-2 font-medium transition-colors duration-150 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none group/button h-fit";
 
 /**
  * Generic Button component for Next.js + Tailwind.
