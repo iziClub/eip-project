@@ -29,6 +29,12 @@ export default class User extends compose(BaseModel, AuthFinder) {
   @column()
   declare role: 'USER' | 'ADMIN'
 
+  @column({ columnName: 'is_super_admin', serializeAs: 'isSuperAdmin' })
+  declare isSuperAdmin: boolean
+
+  @column({ columnName: 'club_id', serializeAs: 'clubId' })
+  declare clubId: number | null
+
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
 

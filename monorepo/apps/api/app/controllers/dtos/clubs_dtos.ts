@@ -50,6 +50,24 @@ export class ClubDto {
   @ApiProperty({ type: String, required: false })
   declare imageUrl?: string | null
 
+  @ApiProperty({ type: String, required: false })
+  declare bannerImageUrl?: string | null
+
+  @ApiProperty({ type: String, required: false })
+  declare logoImageUrl?: string | null
+
+  @ApiProperty({ type: () => [String], required: false })
+  declare galleryUrls?: string[]
+
+  @ApiProperty({ type: Number, required: false })
+  declare distance?: number | null
+
+  @ApiProperty({ type: () => [String], required: false })
+  declare openingHours?: string[]
+
+  @ApiProperty({ type: () => [String], required: false })
+  declare tags?: string[]
+
   @ApiProperty({ type: Boolean })
   declare isActive: boolean
 

@@ -1,6 +1,7 @@
 import type { HttpContext } from '@adonisjs/core/http'
 import Club from '#models/club'
 import { clubIndexValidator } from '#validators/club_index_validator'
+import db from '@adonisjs/lucid/services/db'
 
 import {
   ApiTags,
@@ -111,6 +112,9 @@ export default class ClubsController {
     }
 
     if (hasLocation) {
+      const distanceSql =
+        'sqrt(power((latitude - ?) * 111.32, 2) + power((longitude - ?) * 111.32 * cos(radians(?)), 2))'
+      query.select('*').select(db.rawQuery(`${distanceSql} as distance_km`, [latitude, longitude, latitude]))
       const latRadius = radiusKm / 111.32
       const lonRadius =
         radiusKm / Math.max(111.32 * Math.cos((latitude * Math.PI) / 180), 0.0001)

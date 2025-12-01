@@ -51,6 +51,9 @@ export class EventDto {
   @ApiProperty({ type: String, required: false })
   declare imageUrl?: string | null
 
+  @ApiProperty({ type: Number, required: false })
+  declare distance?: number | null
+
   @ApiProperty({ type: Boolean })
   declare isActive: boolean
 

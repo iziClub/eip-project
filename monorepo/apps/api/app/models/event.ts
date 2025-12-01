@@ -1,5 +1,5 @@
 import { DateTime } from 'luxon'
-import { BaseModel, belongsTo, column } from '@adonisjs/lucid/orm'
+import { BaseModel, belongsTo, column, computed } from '@adonisjs/lucid/orm'
 import type { BelongsTo } from '@adonisjs/lucid/types/relations'
 import { slugify } from '@adonisjs/lucid-slugify'
 import Club from '#models/club'
@@ -69,4 +69,10 @@ export default class Event extends BaseModel {
 
   @belongsTo(() => Club)
   declare club: BelongsTo<typeof Club>
+
+  @computed()
+  public get distance(): number | null {
+    const raw = (this as any).$extras?.distance_km ?? (this as any).$extras?.distance
+    return typeof raw === 'number' ? Math.round(raw * 1000) / 1000 : null
+  }
 }

@@ -8,9 +8,14 @@ Liste paginée des clubs avec filtres optionnels.
  - \`q\` (*string, optionnel*) : recherche (nom, description, ville)
  - \`type\` (*string, optionnel*) : type de club (ex: "football")
  - \`city\` (*string, optionnel*) : ville
- - \`is_active\` (*boolean, optionnel*) : uniquement les clubs actifs/inactifs
- - \`latitude\` & \`longitude\` (*number, optionnel ensemble*) : filtre les clubs proches d’un point
- - \`radius_km\` (*number, optionnel*) : rayon de recherche en km autour des coordonnées (défaut: 50)
+- \`is_active\` (*boolean, optionnel*) : uniquement les clubs actifs/inactifs
+- \`latitude\` & \`longitude\` (*number, optionnel ensemble*) : filtre les clubs proches d’un point
+- \`radius_km\` (*number, optionnel*) : rayon de recherche en km autour des coordonnées (défaut: 50)
+- Métadonnées média (retour) : \`imageUrl\`, \`bannerImageUrl\`, \`logoImageUrl\`, \`galleryUrls[]\`
+- \`distance\` (retour) : distance en km calculée quand \`latitude\` + \`longitude\` sont fournis
+- Horaires (retour) : \`openingHours[]\`
+- Tags (retour) : \`tags[]\`
+  - Horaires format jour par jour en français (ex: "Lundi: 09:00-20:00")
 
 En pratique les filtres sont envoyés **en query string**, mais sont décrits dans le body du schéma pour la documentation.
 `

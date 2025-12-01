@@ -3,6 +3,46 @@ import { BaseSeeder } from '@adonisjs/lucid/seeders'
 
 export default class ClubsSeeder extends BaseSeeder {
   public async run() {
+    const TYPE_TRANSLATIONS: Record<string, string> = {
+      volleyball: 'volley-ball',
+      basketball: 'basket-ball',
+      baseball: 'base-ball',
+      swimming: 'natation',
+      climbing: 'escalade',
+      athletics: 'athlétisme',
+      cycling: 'cyclisme',
+      boxing: 'boxe',
+      rugby: 'rugby',
+      football: 'football',
+      tennis: 'tennis',
+      triathlon: 'triathlon',
+      badminton: 'badminton',
+      handball: 'handball',
+      fencing: 'escrime',
+      hockey: 'hockey',
+      dance: 'danse',
+      karting: 'karting',
+      gymnastics: 'gymnastique',
+      running: 'course',
+      rowing: 'aviron',
+      sailing: 'voile',
+      ultimate: 'ultimate',
+    }
+
+    const normalizeTag = (tag: string) => {
+      const key = tag.toLowerCase().trim()
+      return TYPE_TRANSLATIONS[key] ?? key
+    }
+
+    const DEFAULT_OPENING_HOURS = [
+      'Lundi: 09:00-20:00',
+      'Mardi: 09:00-20:00',
+      'Mercredi: 09:00-20:00',
+      'Jeudi: 09:00-20:00',
+      'Vendredi: 09:00-20:00',
+      'Samedi: 10:00-18:00',
+      'Dimanche: Fermé',
+    ]
     const clubs = [
       {
         name: 'Paris Athletic Club',
@@ -18,7 +58,17 @@ export default class ClubsSeeder extends BaseSeeder {
         country: 'France',
         latitude: 48.859,
         longitude: 2.361,
-        imageUrl: 'https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=1200&q=80',
+        imageUrl:
+          'https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=1200&q=80',
+        bannerImageUrl:
+          'https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=1200&q=80',
+        logoImageUrl:
+          'https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=1200&q=80',
+        galleryUrls: [
+          'https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=1200&q=80',
+        ],
+        openingHours: ['Lun-Ven 09:00-20:00', 'Sam 10:00-18:00'],
+        tags: ['football', 'multisport', 'compétition', 'formation'],
         isActive: true,
       },
       {
@@ -35,7 +85,17 @@ export default class ClubsSeeder extends BaseSeeder {
         country: 'France',
         latitude: 45.7407,
         longitude: 4.8257,
-        imageUrl: 'https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=1200&q=80',
+        imageUrl:
+          'https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=1200&q=80',
+        bannerImageUrl:
+          'https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=1200&q=80',
+        logoImageUrl:
+          'https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=1200&q=80',
+        galleryUrls: [
+          'https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=1200&q=80',
+        ],
+        openingHours: ['Lun-Ven 09:00-19:00', 'Sam 10:00-16:00'],
+        tags: ['football', 'lyon', 'académie', 'jeunesse'],
         isActive: true,
       },
       {
@@ -52,7 +112,17 @@ export default class ClubsSeeder extends BaseSeeder {
         country: 'France',
         latitude: 43.2706,
         longitude: 5.3957,
-        imageUrl: 'https://images.unsplash.com/photo-1508609349937-5ec4ae374ebf?auto=format&fit=crop&w=1200&q=80',
+        imageUrl:
+          'https://images.unsplash.com/photo-1508609349937-5ec4ae374ebf?auto=format&fit=crop&w=1200&q=80',
+        bannerImageUrl:
+          'https://images.unsplash.com/photo-1508609349937-5ec4ae374ebf?auto=format&fit=crop&w=1200&q=80',
+        logoImageUrl:
+          'https://images.unsplash.com/photo-1508609349937-5ec4ae374ebf?auto=format&fit=crop&w=1200&q=80',
+        galleryUrls: [
+          'https://images.unsplash.com/photo-1508609349937-5ec4ae374ebf?auto=format&fit=crop&w=1200&q=80',
+        ],
+        openingHours: ['Lun-Dim 08:00-22:00'],
+        tags: ['tennis', 'marseille', 'tournoi'],
         isActive: true,
       },
       {
@@ -69,7 +139,17 @@ export default class ClubsSeeder extends BaseSeeder {
         country: 'France',
         latitude: 43.6009,
         longitude: 1.444,
-        imageUrl: 'https://images.unsplash.com/photo-1509021436665-8f07dbf5bf1d?auto=format&fit=crop&w=1200&q=80',
+        imageUrl:
+          'https://images.unsplash.com/photo-1509021436665-8f07dbf5bf1d?auto=format&fit=crop&w=1200&q=80',
+        bannerImageUrl:
+          'https://images.unsplash.com/photo-1509021436665-8f07dbf5bf1d?auto=format&fit=crop&w=1200&q=80',
+        logoImageUrl:
+          'https://images.unsplash.com/photo-1509021436665-8f07dbf5bf1d?auto=format&fit=crop&w=1200&q=80',
+        galleryUrls: [
+          'https://images.unsplash.com/photo-1509021436665-8f07dbf5bf1d?auto=format&fit=crop&w=1200&q=80',
+        ],
+        openingHours: ['Lun-Ven 07:00-21:00', 'Sam 09:00-18:00'],
+        tags: ['natation', 'toulouse', 'piscine', 'loisir'],
         isActive: true,
       },
       {
@@ -86,7 +166,17 @@ export default class ClubsSeeder extends BaseSeeder {
         country: 'France',
         latitude: 50.632,
         longitude: 3.07,
-        imageUrl: 'https://images.unsplash.com/photo-1505842465776-3bfd188799b5?auto=format&fit=crop&w=1200&q=80',
+        imageUrl:
+          'https://images.unsplash.com/photo-1505842465776-3bfd188799b5?auto=format&fit=crop&w=1200&q=80',
+        bannerImageUrl:
+          'https://images.unsplash.com/photo-1505842465776-3bfd188799b5?auto=format&fit=crop&w=1200&q=80',
+        logoImageUrl:
+          'https://images.unsplash.com/photo-1505842465776-3bfd188799b5?auto=format&fit=crop&w=1200&q=80',
+        galleryUrls: [
+          'https://images.unsplash.com/photo-1505842465776-3bfd188799b5?auto=format&fit=crop&w=1200&q=80',
+        ],
+        openingHours: ['Mar-Dim 10:00-20:00'],
+        tags: ['rugby', 'lille', 'formation'],
         isActive: true,
       },
       {
@@ -103,7 +193,17 @@ export default class ClubsSeeder extends BaseSeeder {
         country: 'France',
         latitude: 43.7013,
         longitude: 7.2663,
-        imageUrl: 'https://images.unsplash.com/photo-1518098268026-4e89f1a2cd8e?auto=format&fit=crop&w=1200&q=80',
+        imageUrl:
+          'https://images.unsplash.com/photo-1518098268026-4e89f1a2cd8e?auto=format&fit=crop&w=1200&q=80',
+        bannerImageUrl:
+          'https://images.unsplash.com/photo-1518098268026-4e89f1a2cd8e?auto=format&fit=crop&w=1200&q=80',
+        logoImageUrl:
+          'https://images.unsplash.com/photo-1518098268026-4e89f1a2cd8e?auto=format&fit=crop&w=1200&q=80',
+        galleryUrls: [
+          'https://images.unsplash.com/photo-1518098268026-4e89f1a2cd8e?auto=format&fit=crop&w=1200&q=80',
+        ],
+        openingHours: ['Lun-Ven 06:00-20:00', 'Dim 08:00-12:00'],
+        tags: ['triathlon', 'nice', 'mer'],
         isActive: true,
       },
       {
@@ -120,7 +220,17 @@ export default class ClubsSeeder extends BaseSeeder {
         country: 'France',
         latitude: 44.8412,
         longitude: -0.5806,
-        imageUrl: 'https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?auto=format&fit=crop&w=1200&q=80',
+        imageUrl:
+          'https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?auto=format&fit=crop&w=1200&q=80',
+        bannerImageUrl:
+          'https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?auto=format&fit=crop&w=1200&q=80',
+        logoImageUrl:
+          'https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?auto=format&fit=crop&w=1200&q=80',
+        galleryUrls: [
+          'https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?auto=format&fit=crop&w=1200&q=80',
+        ],
+        openingHours: ['Lun-Sam 09:00-20:00'],
+        tags: ['volleyball', 'bordeaux', 'mixte'],
         isActive: true,
       },
       {
@@ -137,7 +247,17 @@ export default class ClubsSeeder extends BaseSeeder {
         country: 'France',
         latitude: 48.5802,
         longitude: 7.748,
-        imageUrl: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1200&q=80',
+        imageUrl:
+          'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1200&q=80',
+        bannerImageUrl:
+          'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1200&q=80',
+        logoImageUrl:
+          'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1200&q=80',
+        galleryUrls: [
+          'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1200&q=80',
+        ],
+        openingHours: ['Lun-Ven 09:00-21:00', 'Sam 10:00-18:00'],
+        tags: ['escrime', 'strasbourg', 'sabre'],
         isActive: true,
       },
       {
@@ -154,7 +274,17 @@ export default class ClubsSeeder extends BaseSeeder {
         country: 'France',
         latitude: 48.1147,
         longitude: -1.6794,
-        imageUrl: 'https://images.unsplash.com/photo-1502810190503-830027c1a7da?auto=format&fit=crop&w=1200&q=80',
+        imageUrl:
+          'https://images.unsplash.com/photo-1502810190503-830027c1a7da?auto=format&fit=crop&w=1200&q=80',
+        bannerImageUrl:
+          'https://images.unsplash.com/photo-1502810190503-830027c1a7da?auto=format&fit=crop&w=1200&q=80',
+        logoImageUrl:
+          'https://images.unsplash.com/photo-1502810190503-830027c1a7da?auto=format&fit=crop&w=1200&q=80',
+        galleryUrls: [
+          'https://images.unsplash.com/photo-1502810190503-830027c1a7da?auto=format&fit=crop&w=1200&q=80',
+        ],
+        openingHours: ['Lun-Ven 09:00-20:00'],
+        tags: ['judo', 'rennes', 'dojo'],
         isActive: true,
       },
       {
@@ -171,7 +301,17 @@ export default class ClubsSeeder extends BaseSeeder {
         country: 'France',
         latitude: 43.6111,
         longitude: 3.8767,
-        imageUrl: 'https://images.unsplash.com/photo-1505843795480-5cfb3c06c237?auto=format&fit=crop&w=1200&q=80',
+        imageUrl:
+          'https://images.unsplash.com/photo-1505843795480-5cfb3c06c237?auto=format&fit=crop&w=1200&q=80',
+        bannerImageUrl:
+          'https://images.unsplash.com/photo-1505843795480-5cfb3c06c237?auto=format&fit=crop&w=1200&q=80',
+        logoImageUrl:
+          'https://images.unsplash.com/photo-1505843795480-5cfb3c06c237?auto=format&fit=crop&w=1200&q=80',
+        galleryUrls: [
+          'https://images.unsplash.com/photo-1505843795480-5cfb3c06c237?auto=format&fit=crop&w=1200&q=80',
+        ],
+        openingHours: ['Lun-Dim 09:00-22:00'],
+        tags: ['handball', 'montpellier', 'élite'],
         isActive: true,
       },
       {
@@ -188,7 +328,17 @@ export default class ClubsSeeder extends BaseSeeder {
         country: 'France',
         latitude: 47.2184,
         longitude: -1.5536,
-        imageUrl: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=80',
+        imageUrl:
+          'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=80',
+        bannerImageUrl:
+          'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=80',
+        logoImageUrl:
+          'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=80',
+        galleryUrls: [
+          'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=80',
+        ],
+        openingHours: ['Lun-Ven 09:00-20:00', 'Sam 10:00-18:00'],
+        tags: ['badminton', 'nantes'],
         isActive: true,
       },
       {
@@ -205,7 +355,17 @@ export default class ClubsSeeder extends BaseSeeder {
         country: 'France',
         latitude: 43.1251,
         longitude: 5.9306,
-        imageUrl: 'https://images.unsplash.com/photo-1483721310020-03333e577078?auto=format&fit=crop&w=1200&q=80',
+        imageUrl:
+          'https://images.unsplash.com/photo-1483721310020-03333e577078?auto=format&fit=crop&w=1200&q=80',
+        bannerImageUrl:
+          'https://images.unsplash.com/photo-1483721310020-03333e577078?auto=format&fit=crop&w=1200&q=80',
+        logoImageUrl:
+          'https://images.unsplash.com/photo-1483721310020-03333e577078?auto=format&fit=crop&w=1200&q=80',
+        galleryUrls: [
+          'https://images.unsplash.com/photo-1483721310020-03333e577078?auto=format&fit=crop&w=1200&q=80',
+        ],
+        openingHours: ['Lun-Sam 10:00-21:00'],
+        tags: ['boxe', 'toulon'],
         isActive: true,
       },
       {
@@ -222,7 +382,17 @@ export default class ClubsSeeder extends BaseSeeder {
         country: 'France',
         latitude: 47.4736,
         longitude: -0.5514,
-        imageUrl: 'https://images.unsplash.com/photo-1505761671935-60b3a7427bad?auto=format&fit=crop&w=1200&q=80',
+        imageUrl:
+          'https://images.unsplash.com/photo-1505761671935-60b3a7427bad?auto=format&fit=crop&w=1200&q=80',
+        bannerImageUrl:
+          'https://images.unsplash.com/photo-1505761671935-60b3a7427bad?auto=format&fit=crop&w=1200&q=80',
+        logoImageUrl:
+          'https://images.unsplash.com/photo-1505761671935-60b3a7427bad?auto=format&fit=crop&w=1200&q=80',
+        galleryUrls: [
+          'https://images.unsplash.com/photo-1505761671935-60b3a7427bad?auto=format&fit=crop&w=1200&q=80',
+        ],
+        openingHours: ['Lun-Dim 10:00-22:00'],
+        tags: ['hockey', 'angers'],
         isActive: true,
       },
       {
@@ -239,7 +409,15 @@ export default class ClubsSeeder extends BaseSeeder {
         country: 'France',
         latitude: 47.3216,
         longitude: 5.0415,
-        imageUrl: 'https://images.unsplash.com/photo-1504274066651-8d31a536b11a?auto=format&fit=crop&w=1200&q=80',
+        imageUrl:
+          'https://images.unsplash.com/photo-1504274066651-8d31a536b11a?auto=format&fit=crop&w=1200&q=80',
+        bannerImageUrl:
+          'https://images.unsplash.com/photo-1504274066651-8d31a536b11a?auto=format&fit=crop&w=1200&q=80',
+        logoImageUrl:
+          'https://images.unsplash.com/photo-1504274066651-8d31a536b11a?auto=format&fit=crop&w=1200&q=80',
+        galleryUrls: [
+          'https://images.unsplash.com/photo-1504274066651-8d31a536b11a?auto=format&fit=crop&w=1200&q=80',
+        ],
         isActive: true,
       },
       {
@@ -256,7 +434,15 @@ export default class ClubsSeeder extends BaseSeeder {
         country: 'France',
         latitude: 47.3941,
         longitude: 0.6896,
-        imageUrl: 'https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?auto=format&fit=crop&w=1200&q=80',
+        imageUrl:
+          'https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?auto=format&fit=crop&w=1200&q=80',
+        bannerImageUrl:
+          'https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?auto=format&fit=crop&w=1200&q=80',
+        logoImageUrl:
+          'https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?auto=format&fit=crop&w=1200&q=80',
+        galleryUrls: [
+          'https://images.unsplash.com/photo-1503341455253-b2e723bb3dbb?auto=format&fit=crop&w=1200&q=80',
+        ],
         isActive: true,
       },
       {
@@ -273,7 +459,15 @@ export default class ClubsSeeder extends BaseSeeder {
         country: 'France',
         latitude: 49.2583,
         longitude: 4.0317,
-        imageUrl: 'https://images.unsplash.com/photo-1468645547353-56d325bb57ff?auto=format&fit=crop&w=1200&q=80',
+        imageUrl:
+          'https://images.unsplash.com/photo-1468645547353-56d325bb57ff?auto=format&fit=crop&w=1200&q=80',
+        bannerImageUrl:
+          'https://images.unsplash.com/photo-1468645547353-56d325bb57ff?auto=format&fit=crop&w=1200&q=80',
+        logoImageUrl:
+          'https://images.unsplash.com/photo-1468645547353-56d325bb57ff?auto=format&fit=crop&w=1200&q=80',
+        galleryUrls: [
+          'https://images.unsplash.com/photo-1468645547353-56d325bb57ff?auto=format&fit=crop&w=1200&q=80',
+        ],
         isActive: true,
       },
       {
@@ -290,7 +484,15 @@ export default class ClubsSeeder extends BaseSeeder {
         country: 'France',
         latitude: 49.1203,
         longitude: 6.1778,
-        imageUrl: 'https://images.unsplash.com/photo-1471295253337-3ceaaedca402?auto=format&fit=crop&w=1200&q=80',
+        imageUrl:
+          'https://images.unsplash.com/photo-1471295253337-3ceaaedca402?auto=format&fit=crop&w=1200&q=80',
+        bannerImageUrl:
+          'https://images.unsplash.com/photo-1471295253337-3ceaaedca402?auto=format&fit=crop&w=1200&q=80',
+        logoImageUrl:
+          'https://images.unsplash.com/photo-1471295253337-3ceaaedca402?auto=format&fit=crop&w=1200&q=80',
+        galleryUrls: [
+          'https://images.unsplash.com/photo-1471295253337-3ceaaedca402?auto=format&fit=crop&w=1200&q=80',
+        ],
         isActive: true,
       },
       {
@@ -307,7 +509,15 @@ export default class ClubsSeeder extends BaseSeeder {
         country: 'France',
         latitude: 48.6921,
         longitude: 6.1844,
-        imageUrl: 'https://images.unsplash.com/photo-1509112756314-34a0badb29d4?auto=format&fit=crop&w=1200&q=80',
+        imageUrl:
+          'https://www.passionkart.fr/wp-content/uploads/2017/09/karting-nancy-oberlin-grand-est.jpg',
+        bannerImageUrl:
+          'https://images.unsplash.com/photo-1509112756314-34a0badb29d4?auto=format&fit=crop&w=1200&q=80',
+        logoImageUrl:
+          'https://images.unsplash.com/photo-1509112756314-34a0badb29d4?auto=format&fit=crop&w=1200&q=80',
+        galleryUrls: [
+          'https://images.unsplash.com/photo-1509112756314-34a0badb29d4?auto=format&fit=crop&w=1200&q=80',
+        ],
         isActive: true,
       },
       {
@@ -324,7 +534,15 @@ export default class ClubsSeeder extends BaseSeeder {
         country: 'France',
         latitude: 49.1829,
         longitude: -0.3712,
-        imageUrl: 'https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=1200&q=80',
+        imageUrl:
+          'https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=1200&q=80',
+        bannerImageUrl:
+          'https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=1200&q=80',
+        logoImageUrl:
+          'https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=1200&q=80',
+        galleryUrls: [
+          'https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=1200&q=80',
+        ],
         isActive: true,
       },
       {
@@ -341,7 +559,15 @@ export default class ClubsSeeder extends BaseSeeder {
         country: 'France',
         latitude: 45.1885,
         longitude: 5.7245,
-        imageUrl: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80',
+        imageUrl:
+          'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80',
+        bannerImageUrl:
+          'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80',
+        logoImageUrl:
+          'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80',
+        galleryUrls: [
+          'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80',
+        ],
         isActive: true,
       },
       {
@@ -358,7 +584,15 @@ export default class ClubsSeeder extends BaseSeeder {
         country: 'France',
         latitude: 45.7772,
         longitude: 3.087,
-        imageUrl: 'https://images.unsplash.com/photo-1508264165352-258859e62245?auto=format&fit=crop&w=1200&q=80',
+        imageUrl:
+          'https://images.unsplash.com/photo-1508264165352-258859e62245?auto=format&fit=crop&w=1200&q=80',
+        bannerImageUrl:
+          'https://images.unsplash.com/photo-1508264165352-258859e62245?auto=format&fit=crop&w=1200&q=80',
+        logoImageUrl:
+          'https://images.unsplash.com/photo-1508264165352-258859e62245?auto=format&fit=crop&w=1200&q=80',
+        galleryUrls: [
+          'https://images.unsplash.com/photo-1508264165352-258859e62245?auto=format&fit=crop&w=1200&q=80',
+        ],
         isActive: true,
       },
       {
@@ -375,7 +609,15 @@ export default class ClubsSeeder extends BaseSeeder {
         country: 'France',
         latitude: 49.8942,
         longitude: 2.2957,
-        imageUrl: 'https://images.unsplash.com/photo-1518615977005-a16606bde3a6?auto=format&fit=crop&w=1200&q=80',
+        imageUrl:
+          'https://images.unsplash.com/photo-1518615977005-a16606bde3a6?auto=format&fit=crop&w=1200&q=80',
+        bannerImageUrl:
+          'https://images.unsplash.com/photo-1518615977005-a16606bde3a6?auto=format&fit=crop&w=1200&q=80',
+        logoImageUrl:
+          'https://images.unsplash.com/photo-1518615977005-a16606bde3a6?auto=format&fit=crop&w=1200&q=80',
+        galleryUrls: [
+          'https://images.unsplash.com/photo-1518615977005-a16606bde3a6?auto=format&fit=crop&w=1200&q=80',
+        ],
         isActive: true,
       },
       {
@@ -392,7 +634,15 @@ export default class ClubsSeeder extends BaseSeeder {
         country: 'France',
         latitude: 45.8336,
         longitude: 1.2611,
-        imageUrl: 'https://images.unsplash.com/photo-1495562569060-2eec283d3391?auto=format&fit=crop&w=1200&q=80',
+        imageUrl:
+          'https://images.unsplash.com/photo-1495562569060-2eec283d3391?auto=format&fit=crop&w=1200&q=80',
+        bannerImageUrl:
+          'https://images.unsplash.com/photo-1495562569060-2eec283d3391?auto=format&fit=crop&w=1200&q=80',
+        logoImageUrl:
+          'https://images.unsplash.com/photo-1495562569060-2eec283d3391?auto=format&fit=crop&w=1200&q=80',
+        galleryUrls: [
+          'https://images.unsplash.com/photo-1495562569060-2eec283d3391?auto=format&fit=crop&w=1200&q=80',
+        ],
         isActive: true,
       },
       {
@@ -409,7 +659,15 @@ export default class ClubsSeeder extends BaseSeeder {
         country: 'France',
         latitude: 48.3904,
         longitude: -4.4861,
-        imageUrl: 'https://images.unsplash.com/photo-1505764706515-aa95265c5abc?auto=format&fit=crop&w=1200&q=80',
+        imageUrl:
+          'https://images.unsplash.com/photo-1505764706515-aa95265c5abc?auto=format&fit=crop&w=1200&q=80',
+        bannerImageUrl:
+          'https://images.unsplash.com/photo-1505764706515-aa95265c5abc?auto=format&fit=crop&w=1200&q=80',
+        logoImageUrl:
+          'https://images.unsplash.com/photo-1505764706515-aa95265c5abc?auto=format&fit=crop&w=1200&q=80',
+        galleryUrls: [
+          'https://images.unsplash.com/photo-1505764706515-aa95265c5abc?auto=format&fit=crop&w=1200&q=80',
+        ],
         isActive: true,
       },
       {
@@ -426,7 +684,15 @@ export default class ClubsSeeder extends BaseSeeder {
         country: 'France',
         latitude: 43.9483,
         longitude: 4.8055,
-        imageUrl: 'https://images.unsplash.com/photo-1495567720989-cebdbdd97913?auto=format&fit=crop&w=1200&q=80',
+        imageUrl:
+          'https://images.unsplash.com/photo-1495567720989-cebdbdd97913?auto=format&fit=crop&w=1200&q=80',
+        bannerImageUrl:
+          'https://images.unsplash.com/photo-1495567720989-cebdbdd97913?auto=format&fit=crop&w=1200&q=80',
+        logoImageUrl:
+          'https://images.unsplash.com/photo-1495567720989-cebdbdd97913?auto=format&fit=crop&w=1200&q=80',
+        galleryUrls: [
+          'https://images.unsplash.com/photo-1495567720989-cebdbdd97913?auto=format&fit=crop&w=1200&q=80',
+        ],
         isActive: true,
       },
       {
@@ -443,7 +709,15 @@ export default class ClubsSeeder extends BaseSeeder {
         country: 'France',
         latitude: 42.6887,
         longitude: 2.8948,
-        imageUrl: 'https://images.unsplash.com/photo-1505765680444-25eb0e3c66f3?auto=format&fit=crop&w=1200&q=80',
+        imageUrl:
+          'https://images.unsplash.com/photo-1505765680444-25eb0e3c66f3?auto=format&fit=crop&w=1200&q=80',
+        bannerImageUrl:
+          'https://images.unsplash.com/photo-1505765680444-25eb0e3c66f3?auto=format&fit=crop&w=1200&q=80',
+        logoImageUrl:
+          'https://images.unsplash.com/photo-1505765680444-25eb0e3c66f3?auto=format&fit=crop&w=1200&q=80',
+        galleryUrls: [
+          'https://images.unsplash.com/photo-1505765680444-25eb0e3c66f3?auto=format&fit=crop&w=1200&q=80',
+        ],
         isActive: true,
       },
       {
@@ -460,7 +734,15 @@ export default class ClubsSeeder extends BaseSeeder {
         country: 'France',
         latitude: 46.5802,
         longitude: 0.3404,
-        imageUrl: 'https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1200&q=80',
+        imageUrl:
+          'https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1200&q=80',
+        bannerImageUrl:
+          'https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1200&q=80',
+        logoImageUrl:
+          'https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1200&q=80',
+        galleryUrls: [
+          'https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=1200&q=80',
+        ],
         isActive: true,
       },
       {
@@ -477,7 +759,15 @@ export default class ClubsSeeder extends BaseSeeder {
         country: 'France',
         latitude: 45.4397,
         longitude: 4.3872,
-        imageUrl: 'https://images.unsplash.com/photo-1504306661006-343c1b0b1d1c?auto=format&fit=crop&w=1200&q=80',
+        imageUrl:
+          'https://images.unsplash.com/photo-1504306661006-343c1b0b1d1c?auto=format&fit=crop&w=1200&q=80',
+        bannerImageUrl:
+          'https://images.unsplash.com/photo-1504306661006-343c1b0b1d1c?auto=format&fit=crop&w=1200&q=80',
+        logoImageUrl:
+          'https://images.unsplash.com/photo-1504306661006-343c1b0b1d1c?auto=format&fit=crop&w=1200&q=80',
+        galleryUrls: [
+          'https://images.unsplash.com/photo-1504306661006-343c1b0b1d1c?auto=format&fit=crop&w=1200&q=80',
+        ],
         isActive: true,
       },
       {
@@ -494,7 +784,15 @@ export default class ClubsSeeder extends BaseSeeder {
         country: 'France',
         latitude: 49.4431,
         longitude: 1.0993,
-        imageUrl: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80',
+        imageUrl:
+          'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80',
+        bannerImageUrl:
+          'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80',
+        logoImageUrl:
+          'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80',
+        galleryUrls: [
+          'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80',
+        ],
         isActive: true,
       },
       {
@@ -511,13 +809,42 @@ export default class ClubsSeeder extends BaseSeeder {
         country: 'France',
         latitude: 47.2378,
         longitude: 6.0241,
-        imageUrl: 'https://images.unsplash.com/photo-1502810190503-830027c1a7da?auto=format&fit=crop&w=1200&q=80',
+        imageUrl:
+          'https://images.unsplash.com/photo-1502810190503-830027c1a7da?auto=format&fit=crop&w=1200&q=80',
+        bannerImageUrl:
+          'https://images.unsplash.com/photo-1502810190503-830027c1a7da?auto=format&fit=crop&w=1200&q=80',
+        logoImageUrl:
+          'https://images.unsplash.com/photo-1502810190503-830027c1a7da?auto=format&fit=crop&w=1200&q=80',
+        galleryUrls: [
+          'https://images.unsplash.com/photo-1502810190503-830027c1a7da?auto=format&fit=crop&w=1200&q=80',
+        ],
         isActive: true,
       },
     ]
 
     for (const club of clubs) {
-      await Club.updateOrCreate({ name: club.name }, club)
+      const tagsSet = new Set<string>()
+      ;(club.tags ?? []).forEach((t) => tagsSet.add(normalizeTag(t)))
+      if (club.type) tagsSet.add(normalizeTag(club.type))
+      if (club.city) tagsSet.add(club.city.toLowerCase())
+      const tags = Array.from(tagsSet)
+        .filter(Boolean)
+        .slice(0, 6)
+
+      await Club.updateOrCreate(
+        { name: club.name },
+        {
+          ...club,
+          bannerImageUrl: club.bannerImageUrl ?? club.imageUrl,
+          logoImageUrl: club.logoImageUrl ?? club.imageUrl,
+          galleryUrls:
+            club.galleryUrls && club.galleryUrls.length > 0
+              ? club.galleryUrls
+              : [club.imageUrl],
+          openingHours: DEFAULT_OPENING_HOURS,
+          tags,
+        }
+      )
     }
   }
 }
