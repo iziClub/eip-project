@@ -23,7 +23,7 @@ export default function Modal() {
           {content}
         </div>
 
-        <div className="flex justify-end gap-2 mt-6">
+        <div className="flex justify-end gap-2 mt-5">
           <Button
             variant="grey"
             onClick={() => {
