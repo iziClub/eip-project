@@ -1,16 +1,18 @@
 "use client";
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/Tabs";
-import TextModifier from "@/components/ui/TextModifier";
 import { useState } from "react";
+import InformationTab from "@/components/showcase/InformationTab";
+import GalleryTab from "@/components/showcase/GalleryTab";
+import CalendarTab from "@/components/showcase/CallendarTab";
 
 export default function VitrinePage() {
   const [clubName, setClubName] = useState("AS Talange");
 
   return (
-    <div className="p-6 grid-layout grid-gap">
-      <div className="el-container col-span-7">
-        <div className="flex flex-row">
+    <div className="px-6 pb-6 grid-layout grid-gap h-full">
+      <div className="el-container col-span-7 h-full">
+        <div className="flex flex-row h-full">
           <Tabs defaultValue="Information" className="w-full">
             <TabsList>
               <TabsTrigger value="Information" className="justify-center">
@@ -25,24 +27,15 @@ export default function VitrinePage() {
             </TabsList>
 
             <TabsContent value="Information">
-              <TextModifier
-                label="Nom du club"
-                value={clubName}
-                onSave={(newValue) => {
-                  setClubName(newValue);
-
-                  // 👉 ici : appel API PUT vers ton back
-                  // await api.updateClub({ clubName: newValue })
-                }}
-                />
+              <InformationTab />
             </TabsContent>
 
             <TabsContent value="Gallery">
-              Galerie
+              <GalleryTab />
             </TabsContent>
 
-            <TabsContent value="Calendar  ">
-              Calendrier
+            <TabsContent value="Calendar">
+              <CalendarTab />
             </TabsContent>
           </Tabs>
         </div>

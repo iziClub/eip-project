@@ -2,7 +2,6 @@
 
 import { createContext, useContext, useState, ReactNode } from 'react';
 
-// Context pour gérer l'état des tabs
 interface TabsContextType {
   activeTab: string;
   setActiveTab: (value: string) => void;
@@ -18,7 +17,6 @@ const useTabsContext = () => {
   return context;
 };
 
-// Composant principal Tabs
 interface TabsProps {
   defaultValue: string;
   children: ReactNode;
@@ -35,7 +33,6 @@ export function Tabs({ defaultValue, children, className = '' }: TabsProps) {
   );
 }
 
-// Liste des tabs (navigation)
 interface TabsListProps {
   children: ReactNode;
   className?: string;
@@ -52,7 +49,6 @@ export function TabsList({ children, className = '' }: TabsListProps) {
   );
 }
 
-// Bouton tab individuel
 interface TabsTriggerProps {
   value: string;
   children: ReactNode;
@@ -79,7 +75,6 @@ export function TabsTrigger({ value, children, className = '' }: TabsTriggerProp
   );
 }
 
-// Contenu d'un tab
 interface TabsContentProps {
   value: string;
   children: ReactNode;
