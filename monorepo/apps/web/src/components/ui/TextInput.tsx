@@ -10,7 +10,7 @@ export interface TextInputProps {
   name?: string;
   id?: string;
   disabled?: boolean;
-  error?: boolean;
+  error?: boolean;    
   className?: string;
   labelClassName?: "small" | "large";
   inputClassName?: string;

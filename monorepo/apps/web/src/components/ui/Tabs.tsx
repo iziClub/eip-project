@@ -28,7 +28,7 @@ export function Tabs({ defaultValue, children, className = '' }: TabsProps) {
 
   return (
     <TabsContext.Provider value={{ activeTab, setActiveTab }}>
-      <div className={className}>{children}</div>
+      <div className={`relative flex flex-col h-full ${className}`}>{children}</div>
     </TabsContext.Provider>
   );
 }
@@ -42,7 +42,7 @@ export function TabsList({ children, className = '' }: TabsListProps) {
   return (
     <div
       role="tablist"
-      className={`flex gap-4  ${className}`}
+      className={`flex gap-4 shrink-0 ${className}`}
     >
       {children}
     </div>
@@ -87,7 +87,20 @@ export function TabsContent({ value, children, className = '' }: TabsContentProp
   if (activeTab !== value) return null;
 
   return (
-    <div role="tabpanel" className={`pt-4 text-black ${className}`}>
+    <div role="tabpanel" className={`flex-1 pt-4 pb-20 text-black overflow-y-auto ${className}`}>
+      {children}
+    </div>
+  );
+}
+
+interface TabsFooterProps {
+  children: ReactNode;
+  className?: string;
+}
+
+export function TabsFooter({ children, className = '' }: TabsFooterProps) {
+  return (
+    <div className={`absolute bottom-0 right-0  ${className}`}>
       {children}
     </div>
   );
