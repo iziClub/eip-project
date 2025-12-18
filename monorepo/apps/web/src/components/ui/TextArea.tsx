@@ -21,7 +21,7 @@ const TextArea: React.FC<TextAreaProps> = ({
     <textarea
       defaultValue={defaultValue}
       value={value}
-      className={`border border-grey-2 text-black p-4 w-full rounded-[10px] ${resize ? 'resize' : 'resize-none'} ${disabled ? ' text-grey-3' : ''}`}
+      className={`border disabled:cursor-not-allowed border-grey-2 text-black p-4 w-full rounded-[10px] ${resize ? 'resize' : 'resize-none'} ${disabled ? ' text-grey-3' : ''}`}
       rows={rows}
       onChange={onChange}
       disabled={disabled}

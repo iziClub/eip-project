@@ -102,7 +102,7 @@ export default function FileUpload({ multiple = false, onFilesChange }: FileUplo
               <p className="font-semibold text-black text-sm">
                 Sélectionnez {multiple ? "des fichiers" : "un fichier"} ou faites-{multiple ? "les" : "le"} glisser ici
               </p>
-              <p className="font-light text-black text-xs">jpg, png, jpeg, webp - jusqu'à 5Mo par fichier</p>
+              <p className="font-light text-black text-xs">jpg, png, jpeg, webp - jusqu&apos;à 5Mo par fichier</p>
             </div>
             <input 
               id="file-upload" 
