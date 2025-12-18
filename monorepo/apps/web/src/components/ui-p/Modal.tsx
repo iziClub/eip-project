@@ -1,7 +1,7 @@
 "use client";
 
 import { useModalStore } from "@/stores/ModalStore";
-import Button from "./Button";
+import { Button } from "@/components/ui/button";
 
 export default function Modal() {
   const { isOpen, title, content, onSave, onCancel, closeModal } = useModalStore();
@@ -26,6 +26,7 @@ export default function Modal() {
         <div className="flex justify-end gap-2 mt-5">
           <Button
             variant="grey"
+            size={'md'}
             onClick={() => {
               onCancel?.();
               closeModal();
@@ -38,7 +39,8 @@ export default function Modal() {
           </Button>
           {onSave &&          
             <Button
-              variant="save"
+              variant="blue"
+              size={'md'}
               onClick={() => {
                 onSave();
                 closeModal();

@@ -1,6 +1,6 @@
 "use client";
 
-import { FieldModifier } from "@/components/ui/FieldModifier";
+import { FieldModifier } from "@/components/ui-p/FieldModifier";
 import { useState } from "react";
 
 export default function InformationTab() {

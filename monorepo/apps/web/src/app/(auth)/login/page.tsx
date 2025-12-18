@@ -2,9 +2,10 @@
 
 import { useState } from 'react';
 import { useAuth } from '@/contexts/AuthContext';
-import TextInput from '@/components/ui/TextInput';
-import PasswordInput from '@/components/ui/PasswordInput';
-import Button from '@/components/ui/Button';
+import TextInput from '@/components/ui-p/TextInput';
+import PasswordInput from '@/components/ui-p/PasswordInput';
+// import Button from '@/components/ui-p/Button';
+import { Button }  from '@/components/ui/button';
 import toast from 'react-hot-toast';
 
 export default function LoginPage() {
@@ -94,9 +95,10 @@ export default function LoginPage() {
               error={passwordError}
             />
             <Button
+            variant={'primary'}
               onClick={handleSubmit}
               className="col-span-2 col-start-4"
-              size="lg"
+              size="md"
               disabled={isSubmitting}
             >
               {isSubmitting ? 'Connexion...' : 'Connectez-vous'}
@@ -110,7 +112,7 @@ export default function LoginPage() {
             <div className="h-px w-full bg-grey-3"></div>
           </div>
           <div className="w-full flex justify-center">
-            <Button variant="grey" className="px-10 gap-4">
+            <Button size={'iconXl'} className='bg-grey-1 hover:bg-grey-2 text-black py-4 px-10'>
               <svg
                 width="24px"
                 height="24px"
