@@ -5,7 +5,7 @@ import { AuthProvider } from '@/contexts/AuthContext';
 import ToasterProvider from '@/components/providers/ToasterProvider';
 
 import './globals.css'
-import Modal from '@/components/ui/Modal';
+import Modal from '@/components/ui-p/Modal';
 
 const figtree = Figtree({
   subsets: ["latin"],
