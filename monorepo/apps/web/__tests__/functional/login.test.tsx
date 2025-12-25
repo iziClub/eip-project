@@ -1,12 +1,12 @@
 import '@testing-library/jest-dom'
-import { render, screen } from '@testing-library/react'
+import { render, screen } from '../test-utils'
 import Login from '@/app/(auth)/login/page'
 
 describe('Login', () => {
   it('renders a heading', () => {
     render(<Login />)
  
-    const heading = screen.getByRole('heading', { level: 1 })
+    const heading = screen.getByRole('', { level: 1 })
  
     expect(heading).toBeInTheDocument()
   })

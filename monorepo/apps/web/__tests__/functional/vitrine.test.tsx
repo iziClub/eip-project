@@ -1,12 +1,12 @@
 import '@testing-library/jest-dom'
-import { render, screen } from '@testing-library/react'
+import { render, screen } from '../test-utils'
 import Vitrine from '@/app/(protected)/vitrine/page'
 
 describe('Vitrine', () => {
   it('renders a heading', () => {
     render(<Vitrine />)
  
-    const heading = screen.getByRole('heading', { level: 1 })
+    const heading = screen.getByRole('', { level: 1 })
  
     expect(heading).toBeInTheDocument()
   })
