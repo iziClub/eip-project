@@ -1,4 +1,4 @@
-import FileUpload from "../ui/FileUpload";
+import FileUpload from "../ui-p/FileUpload";
 
 export default function GalleryTab() {
   return (

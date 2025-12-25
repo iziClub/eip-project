@@ -1,10 +1,10 @@
 import '@testing-library/jest-dom'
-import { render, screen } from '@testing-library/react'
-import About from '@/app/about/page'
+import { render, screen } from '../utils'
+import Login from '@/app/(auth)/login/page'
 
-describe('About', () => {
+describe('Login', () => {
   it('renders a heading', () => {
-    render(<About />)
+    render(<Login />)
  
     const heading = screen.getByRole('heading', { level: 1 })
  
