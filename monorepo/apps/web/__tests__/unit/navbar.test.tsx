@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom'
-import { render, screen } from '../test-utils'
+import { render, screen } from '../utils'
 import Navbar from '@/components/layouts/Navbar'
 
 describe('Navbar', () => {
