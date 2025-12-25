@@ -2,7 +2,7 @@ import '@testing-library/jest-dom'
 import { render, screen } from '@testing-library/react'
 import Vitrine from '@/app/(protected)/vitrine/page'
 
-describe('About', () => {
+describe('Vitrine', () => {
   it('renders a heading', () => {
     render(<Vitrine />)
  
