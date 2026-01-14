@@ -1,7 +1,4 @@
 import { useState } from "react";
-import { Button } from "../ui/button";
-import { useModalStore } from "@/stores/ModalStore";
-
 
 export default function CalendarTab() {
     const mockTeams = [
@@ -72,8 +69,8 @@ export default function CalendarTab() {
     }
   ];
 
-  const [teams, setTeams] = useState(mockTeams);
-  const openModal = useModalStore((state) => state.openModal);
+  const [teams] = useState(mockTeams);
+  // const openModal = useModalStore((state) => state.openModal);
   
   return (
     <div className="space-y-5">
